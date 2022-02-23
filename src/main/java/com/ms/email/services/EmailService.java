@@ -35,10 +35,10 @@ public class EmailService {
             emailSender.send(message);
 
             emailModel.setStatusEmail(StatusEmail.SENT);
-            System.out.println("E-mail enviado");
+            System.out.println("E-mail sented");
         } catch (MailException e){
             emailModel.setStatusEmail(StatusEmail.ERROR);
-            System.out.println("Não foi possível enviar o e-mail");
+            System.out.println("E-mail not sented");
         } finally {
             return emailRepository.save(emailModel);
         }
