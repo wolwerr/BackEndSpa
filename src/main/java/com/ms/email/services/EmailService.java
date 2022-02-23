@@ -32,13 +32,14 @@ public class EmailService {
             message.setTo(emailModel.getEmailTo());
             message.setSubject(emailModel.getSubject());
             message.setText(emailModel.getText());
+            message.setText(emailModel.getPhone());
             emailSender.send(message);
 
             emailModel.setStatusEmail(StatusEmail.SENT);
-            System.out.println("E-mail sented");
+            System.out.println("E-mail enviado");
         } catch (MailException e){
             emailModel.setStatusEmail(StatusEmail.ERROR);
-            System.out.println("E-mail not sented");
+            System.out.println("Não foi possível enviar o e-mail");
         } finally {
             return emailRepository.save(emailModel);
         }
